@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 
 const app = express();
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: 'https://alps-new.vercel.app',
     credentials: true
 }))
 app.use(express.json(
@@ -28,9 +28,9 @@ app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 app.use(cookieParser());
 import userRouter from "./src/router/user.router.js"
-app.use("/api/v1/user",userRouter);
+app.use("/api/v1/user", userRouter);
 import projectRouter from "./src/router/project.router.js"
-app.use("/api/v1/project",projectRouter);
+app.use("/api/v1/project", projectRouter);
 import ticketRouter from "./src/router/ticket.router.js"
-app.use("/api/v1/ticket",ticketRouter)
+app.use("/api/v1/ticket", ticketRouter)
 export { app }
