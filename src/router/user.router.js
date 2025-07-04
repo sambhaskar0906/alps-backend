@@ -8,15 +8,15 @@ import {
   loginUser,
   logoutUser,
 } from "../controllers/user.controller.js";
-import {upload} from "../middleware/imageMulter.middleware.js";
+import { upload } from "../middleware/imageMulter.middleware.js";
 const router = express.Router();
 
-router.post("/",upload.single("profilePhoto") ,createUser);
+router.post("/", upload.single("profilePhoto"), createUser);
 router.get("/", getAllUsers);
-router.post("/login",loginUser),
-router.post("/logout",logoutUser);
+router.post("/login", loginUser),
+  router.post("/logout", logoutUser);
 router.get("/:user_id", getUserById);
-router.put("/:user_id", upload.single("profilePhoto"),updateUser);
+router.put("/:user_id", upload.single("profilePhoto"), updateUser);
 router.delete("/:user_id", deleteUser);
 
 export default router;

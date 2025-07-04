@@ -4,7 +4,8 @@ import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 export const isAuthenticated = asyncHandler(async (req, res, next) => {
-  const token = req.cookies?.accessToken;
+  const token =
+    req.cookies?.accessToken || req.headers.authorization?.split(" ")[1];
 
   if (!token) {
     throw new ApiError(401, "Authentication token missing");

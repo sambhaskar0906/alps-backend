@@ -2,7 +2,7 @@ import { Project } from "../models/project.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import {User} from "../models/user.model.js"
+import { User } from "../models/user.model.js"
 import mongoose from "mongoose";
 // CREATE PROJECT (Admin only)
 export const createProject = asyncHandler(async (req, res) => {
@@ -75,7 +75,7 @@ export const viewProjectById = asyncHandler(async (req, res) => {
 export const getAllProject = asyncHandler(async (req, res) => {
   const filter = {};
   console.log("Logged-in user:", req.user);
-   if (req.user.role === "Client") {
+  if (req.user.role === "Client") {
     filter.user_id = new mongoose.Types.ObjectId(req.user._id);
     console.log("Filter for Client:", filter);
   }
