@@ -27,12 +27,13 @@ app.use(express.urlencoded(
     }
 ))
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
+import { isAuthenticated, authorizeRoles } from "./src/middleware/auth.middleware.js"
 
 app.use(cookieParser());
 import userRouter from "./src/router/user.router.js"
 app.use("/api/v1/user", userRouter);
 import projectRouter from "./src/router/project.router.js"
-app.use("/api/v1/project", projectRouter);
+app.use("/api/v1/project", isAuthenticated, projectRouter);
 import ticketRouter from "./src/router/ticket.router.js"
-app.use("/api/v1/ticket", ticketRouter)
+app.use("/api/v1/ticket", isAuthenticated, ticketRouter)
 export { app }
