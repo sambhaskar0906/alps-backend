@@ -10,6 +10,8 @@ const __dirname = dirname(__filename);
 const app = express();
 app.use(cors({
     origin: 'https://alps-new.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }))
 app.use(express.json(
